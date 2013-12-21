@@ -3,6 +3,7 @@ package net.caspervg.xpbank;
 import net.caspervg.xpbank.command.CheckCommandExecutor;
 import net.caspervg.xpbank.command.DepositCommandExecutor;
 import net.caspervg.xpbank.command.WithdrawCommandExecutor;
+import net.caspervg.xpbank.i18n.Language;
 import net.caspervg.xpbank.listener.ExpLevelListener;
 import net.caspervg.xpbank.persistence.Persistor;
 import org.bukkit.event.Listener;
@@ -20,6 +21,7 @@ public class XPBank extends JavaPlugin implements Listener{
     @Override
     public void onEnable() {
         if (!getDataFolder().exists()) {
+            getLogger().info(Language.getBundle().getString("xp-bank.info.firsttime"));
             getDataFolder().mkdir();
         }
 

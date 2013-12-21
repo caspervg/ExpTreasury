@@ -40,7 +40,7 @@ public class WithdrawCommandExecutor implements CommandExecutor {
         }
 
         if (withdrawn < 0) {
-            commandSender.sendMessage(Language.getBundle().getString("xp-bank.command.deposit.negative"));
+            commandSender.sendMessage(Language.getBundle().getString("xp-bank.command.withdraw.negative"));
             return true;
         }
 
