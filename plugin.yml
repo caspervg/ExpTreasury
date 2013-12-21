@@ -1,0 +1,14 @@
+name: XPBank
+main: net.caspervg.xpbank.XPBank
+version: 0.0.1-INDEV
+prefix: xp-bank
+commands:
+  xp-deposit:
+    description: Deposit XP Levels to the bank.
+    usage: /<command> LevelsToDeposit
+  xp-withdraw:
+    description: Withdraw XP Levels from the bank.
+    usage: /<command> LevelsToWithdraw
+  xp-check:
+    description: Check your XP Levels in the bank.
+    usage: /<command>
