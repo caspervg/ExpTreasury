@@ -1,5 +1,6 @@
 package net.caspervg.xpbank.listener;
 
+import net.caspervg.xpbank.XPBank;
 import net.caspervg.xpbank.i18n.Language;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -14,6 +15,12 @@ import java.text.MessageFormat;
 
 public class ExpLevelListener implements Listener {
 
+    private XPBank bank;
+
+    public ExpLevelListener(XPBank bank) {
+        this.bank = bank;
+    }
+
     @EventHandler
     public void onNewLevel(PlayerLevelChangeEvent event) {
         Player player = event.getPlayer();
@@ -22,11 +29,14 @@ public class ExpLevelListener implements Listener {
             player.sendMessage(formatter.format(new Object[]{30}));
         }
 
-        Firework firework = player.getWorld().spawn(event.getPlayer().getLocation(), Firework.class);
-        FireworkMeta meta = firework.getFireworkMeta();
-        meta.addEffects(FireworkEffect.builder().withColor(Color.BLACK, Color.YELLOW, Color.RED).withFlicker().withFade(Color.YELLOW, Color.RED, Color.BLACK).withTrail().build());
-        meta.setPower(1);
-        firework.setFireworkMeta(meta);
+        if (event.getOldLevel() < event.getNewLevel() && bank.getConfig().getBoolean("fireworks")) {
+            Firework firework = player.getWorld().spawn(event.getPlayer().getLocation(), Firework.class);
+            FireworkMeta meta = firework.getFireworkMeta();
+            meta.addEffects(FireworkEffect.builder().withColor(Color.BLACK, Color.YELLOW, Color.RED).withFlicker().withFade(Color.YELLOW, Color.RED, Color.BLACK).withTrail().build());
+            meta.setPower(1);
+            firework.setFireworkMeta(meta);
+        }
+
     }
 
 }

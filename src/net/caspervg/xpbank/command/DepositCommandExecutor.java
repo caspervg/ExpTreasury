@@ -31,7 +31,7 @@ public class DepositCommandExecutor implements CommandExecutor {
         }
 
         Player player = (Player) commandSender;
-        int deposited = 0;
+        int deposited;
 
         try {
             deposited = Integer.parseInt(strings[0]);
@@ -53,12 +53,19 @@ public class DepositCommandExecutor implements CommandExecutor {
         HashMap<UUID, Integer> bankMap = bank.getBankMap();
 
         int current = 0;
+        int maximum = bank.getConfig().getInt("maximum");
         if (bankMap.containsKey(id)) {
             current = bankMap.get(id);
         }
 
-        if (deposited <= player.getLevel()) {
-            current += deposited;
+        int after = Math.round((float) (current + bank.getConfig().getDouble("percentage")/100.0 * deposited));
+
+
+        if (after > maximum && maximum >= 0) {
+            MessageFormat formatter = new MessageFormat(Language.getBundle().getString("xp-bank.command.deposit.toomuch"));
+            player.sendMessage(formatter.format(new Object[]{maximum}));
+        } else if (deposited <= player.getLevel()) {
+            current = after;
             bankMap.put(id, current);
             player.setLevel(player.getLevel() - deposited);
 

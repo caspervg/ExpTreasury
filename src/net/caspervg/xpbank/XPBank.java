@@ -2,6 +2,7 @@ package net.caspervg.xpbank;
 
 import net.caspervg.xpbank.command.CheckCommandExecutor;
 import net.caspervg.xpbank.command.DepositCommandExecutor;
+import net.caspervg.xpbank.command.ExchangeCommandExecutor;
 import net.caspervg.xpbank.command.WithdrawCommandExecutor;
 import net.caspervg.xpbank.i18n.Language;
 import net.caspervg.xpbank.listener.ExpLevelListener;
@@ -23,6 +24,7 @@ public class XPBank extends JavaPlugin implements Listener{
         if (!getDataFolder().exists()) {
             getLogger().info(Language.getBundle().getString("xp-bank.info.firsttime"));
             getDataFolder().mkdir();
+            saveDefaultConfig();
         }
 
         persistPath = getDataFolder() + File.separator + "xp-bank.bin";
@@ -34,10 +36,11 @@ public class XPBank extends JavaPlugin implements Listener{
             this.bankMap = new HashMap<UUID, Integer>();
         }
 
-        getServer().getPluginManager().registerEvents(new ExpLevelListener(), this);
+        getServer().getPluginManager().registerEvents(new ExpLevelListener(this), this);
         getCommand("xp-deposit").setExecutor(new DepositCommandExecutor(this));
         getCommand("xp-withdraw").setExecutor(new WithdrawCommandExecutor(this));
         getCommand("xp-check").setExecutor(new CheckCommandExecutor(this));
+        getCommand("xp-exchange").setExecutor(new ExchangeCommandExecutor(this));
     }
 
     @Override

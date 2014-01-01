@@ -1,0 +1,8 @@
+# Percentage of the deposited XP levels that will be stored (will be rounded down)
+percentage: 100
+
+# Maximum amount of XP Levels that can be deposited into the bank. Negative for no limit, 0 to disable the XP Bank.
+maximum: 100
+
+# Show fireworks whenever a player gains an XP Level
+fireworks: true

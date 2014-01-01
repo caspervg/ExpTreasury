@@ -5,10 +5,13 @@ prefix: xp-bank
 commands:
   xp-deposit:
     description: Deposit XP Levels to the bank.
-    usage: /<command> LevelsToDeposit
+    usage: /<command> levels
   xp-withdraw:
     description: Withdraw XP Levels from the bank.
-    usage: /<command> LevelsToWithdraw
+    usage: /<command> levels
   xp-check:
     description: Check your XP Levels in the bank.
+    usage: /<command>
+  xp-exchange:
+    description: Check the XP Level exchange rate.
     usage: /<command>
