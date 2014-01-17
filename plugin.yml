@@ -1,6 +1,6 @@
 name: XPBank
 main: net.caspervg.xpbank.XPBank
-version: 0.0.1-INDEV
+version: 0.5.0-RELEASE
 prefix: xp-bank
 commands:
   xp-deposit:
