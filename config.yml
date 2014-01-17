@@ -5,4 +5,4 @@ percentage: 100
 maximum: 100
 
 # Show fireworks whenever a player gains an XP Level
-fireworks: true
+fireworks: false
