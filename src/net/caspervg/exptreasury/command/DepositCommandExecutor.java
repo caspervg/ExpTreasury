@@ -1,7 +1,7 @@
-package net.caspervg.xpbank.command;
+package net.caspervg.exptreasury.command;
 
-import net.caspervg.xpbank.XPBank;
-import net.caspervg.xpbank.i18n.Language;
+import net.caspervg.exptreasury.ExpTreasury;
+import net.caspervg.exptreasury.i18n.Language;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,9 +13,9 @@ import java.util.UUID;
 
 public class DepositCommandExecutor implements CommandExecutor {
 
-    private XPBank bank;
+    private ExpTreasury bank;
 
-    public DepositCommandExecutor(XPBank bank) {
+    public DepositCommandExecutor(ExpTreasury bank) {
         this.bank = bank;
     }
 
@@ -26,7 +26,7 @@ public class DepositCommandExecutor implements CommandExecutor {
         }
 
         if (!(commandSender instanceof Player)) {
-            commandSender.sendMessage(Language.getBundle().getString("xp-bank.error.notplayer"));
+            commandSender.sendMessage(Language.getBundle().getString("exp-treasury.error.notplayer"));
             return true;
         }
 
@@ -40,7 +40,7 @@ public class DepositCommandExecutor implements CommandExecutor {
         }
 
         if (deposited < 0) {
-            commandSender.sendMessage(Language.getBundle().getString("xp-bank.command.deposit.negative"));
+            commandSender.sendMessage(Language.getBundle().getString("exp-treasury.command.deposit.negative"));
             return true;
         }
 
@@ -62,17 +62,17 @@ public class DepositCommandExecutor implements CommandExecutor {
 
 
         if (after > maximum && maximum >= 0) {
-            MessageFormat formatter = new MessageFormat(Language.getBundle().getString("xp-bank.command.deposit.toomuch"));
+            MessageFormat formatter = new MessageFormat(Language.getBundle().getString("exp-treasury.command.deposit.toomuch"));
             player.sendMessage(formatter.format(new Object[]{maximum}));
         } else if (deposited <= player.getLevel()) {
             current = after;
             bankMap.put(id, current);
             player.setLevel(player.getLevel() - deposited);
 
-            MessageFormat formatter = new MessageFormat(Language.getBundle().getString("xp-bank.command.deposit.success"));
+            MessageFormat formatter = new MessageFormat(Language.getBundle().getString("exp-treasury.command.deposit.success"));
             player.sendMessage(formatter.format(new Object[]{current}));
         } else {
-            player.sendMessage(Language.getBundle().getString("xp-bank.command.deposit.failure"));
+            player.sendMessage(Language.getBundle().getString("exp-treasury.command.deposit.failure"));
         }
     }
 }

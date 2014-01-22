@@ -1,7 +1,7 @@
-package net.caspervg.xpbank.command;
+package net.caspervg.exptreasury.command;
 
-import net.caspervg.xpbank.XPBank;
-import net.caspervg.xpbank.i18n.Language;
+import net.caspervg.exptreasury.ExpTreasury;
+import net.caspervg.exptreasury.i18n.Language;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,16 +13,16 @@ import java.util.UUID;
 
 public class CheckCommandExecutor implements CommandExecutor {
 
-    private XPBank bank;
+    private ExpTreasury bank;
 
-    public CheckCommandExecutor(XPBank bank) {
+    public CheckCommandExecutor(ExpTreasury bank) {
         this.bank = bank;
     }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (!(commandSender instanceof Player)) {
-            commandSender.sendMessage(Language.getBundle().getString("xp-bank.error.notplayer"));
+            commandSender.sendMessage(Language.getBundle().getString("exp-treasury.error.notplayer"));
             return true;
         }
 
@@ -41,7 +41,7 @@ public class CheckCommandExecutor implements CommandExecutor {
             current = bankMap.get(id);
         }
 
-        MessageFormat formatter = new MessageFormat(Language.getBundle().getString("xp-bank.command.check"));
+        MessageFormat formatter = new MessageFormat(Language.getBundle().getString("exp-treasury.command.check"));
         player.sendMessage(formatter.format(new Object[]{current}));
     }
 

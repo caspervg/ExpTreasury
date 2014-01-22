@@ -1,4 +1,4 @@
-package net.caspervg.xpbank.persistence;
+package net.caspervg.exptreasury.persistence;
 
 import java.io.*;
 import java.util.HashMap;

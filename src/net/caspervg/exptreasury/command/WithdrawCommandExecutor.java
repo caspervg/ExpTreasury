@@ -1,7 +1,7 @@
-package net.caspervg.xpbank.command;
+package net.caspervg.exptreasury.command;
 
-import net.caspervg.xpbank.XPBank;
-import net.caspervg.xpbank.i18n.Language;
+import net.caspervg.exptreasury.ExpTreasury;
+import net.caspervg.exptreasury.i18n.Language;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,9 +13,9 @@ import java.util.UUID;
 
 public class WithdrawCommandExecutor implements CommandExecutor {
 
-    private XPBank bank;
+    private ExpTreasury bank;
 
-    public WithdrawCommandExecutor(XPBank bank) {
+    public WithdrawCommandExecutor(ExpTreasury bank) {
         this.bank = bank;
     }
 
@@ -26,7 +26,7 @@ public class WithdrawCommandExecutor implements CommandExecutor {
         }
 
         if (!(commandSender instanceof Player)) {
-            commandSender.sendMessage(Language.getBundle().getString("xp-bank.error.notplayer"));
+            commandSender.sendMessage(Language.getBundle().getString("exp-treasury.error.notplayer"));
             return true;
         }
 
@@ -40,7 +40,7 @@ public class WithdrawCommandExecutor implements CommandExecutor {
         }
 
         if (withdrawn < 0) {
-            commandSender.sendMessage(Language.getBundle().getString("xp-bank.command.withdraw.negative"));
+            commandSender.sendMessage(Language.getBundle().getString("exp-treasury.command.withdraw.negative"));
             return true;
         }
 
@@ -62,10 +62,10 @@ public class WithdrawCommandExecutor implements CommandExecutor {
             bankMap.put(id, current);
             player.setLevel(player.getLevel() + withdrawn);
 
-            MessageFormat formatter = new MessageFormat(Language.getBundle().getString("xp-bank.command.withdraw.success"));
+            MessageFormat formatter = new MessageFormat(Language.getBundle().getString("exp-treasury.command.withdraw.success"));
             player.sendMessage(formatter.format(new Object[]{current}));
         } else {
-            player.sendMessage(Language.getBundle().getString("xp-bank.command.withdraw.failure"));
+            player.sendMessage(Language.getBundle().getString("exp-treasury.command.withdraw.failure"));
         }
     }
 }

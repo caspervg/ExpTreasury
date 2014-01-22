@@ -1,7 +1,10 @@
-name: XPBank
-main: net.caspervg.xpbank.XPBank
+name: ExpTreasury
+main: net.caspervg.exptreasury.ExpTreasury
 version: 0.5.0-RELEASE
-prefix: xp-bank
+prefix: exp-treasury
+author: CasperVg
+website: http://dev.bukkit.org/bukkit-plugins/exptreasury/
+description: This plugin allows your players to store their experience levels in a bank, to prevent them from being lost on death.
 commands:
   xp-deposit:
     description: Deposit XP Levels to the bank.

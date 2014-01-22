@@ -1,4 +1,4 @@
-package net.caspervg.xpbank.i18n;
+package net.caspervg.exptreasury.i18n;
 
 import java.util.ResourceBundle;
 

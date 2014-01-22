@@ -1,7 +1,7 @@
-package net.caspervg.xpbank.listener;
+package net.caspervg.exptreasury.listener;
 
-import net.caspervg.xpbank.XPBank;
-import net.caspervg.xpbank.i18n.Language;
+import net.caspervg.exptreasury.ExpTreasury;
+import net.caspervg.exptreasury.i18n.Language;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.entity.Firework;
@@ -15,9 +15,9 @@ import java.text.MessageFormat;
 
 public class ExpLevelListener implements Listener {
 
-    private XPBank bank;
+    private ExpTreasury bank;
 
-    public ExpLevelListener(XPBank bank) {
+    public ExpLevelListener(ExpTreasury bank) {
         this.bank = bank;
     }
 
@@ -25,7 +25,7 @@ public class ExpLevelListener implements Listener {
     public void onNewLevel(PlayerLevelChangeEvent event) {
         Player player = event.getPlayer();
         if (event.getNewLevel() == 30) {
-            MessageFormat formatter = new MessageFormat(Language.getBundle().getString("xp-bank.reminder"));
+            MessageFormat formatter = new MessageFormat(Language.getBundle().getString("exp-treasury.reminder"));
             player.sendMessage(formatter.format(new Object[]{30}));
         }
 

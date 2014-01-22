@@ -1,12 +1,12 @@
-package net.caspervg.xpbank;
+package net.caspervg.exptreasury;
 
-import net.caspervg.xpbank.command.CheckCommandExecutor;
-import net.caspervg.xpbank.command.DepositCommandExecutor;
-import net.caspervg.xpbank.command.ExchangeCommandExecutor;
-import net.caspervg.xpbank.command.WithdrawCommandExecutor;
-import net.caspervg.xpbank.i18n.Language;
-import net.caspervg.xpbank.listener.ExpLevelListener;
-import net.caspervg.xpbank.persistence.Persistor;
+import net.caspervg.exptreasury.command.CheckCommandExecutor;
+import net.caspervg.exptreasury.command.DepositCommandExecutor;
+import net.caspervg.exptreasury.command.ExchangeCommandExecutor;
+import net.caspervg.exptreasury.command.WithdrawCommandExecutor;
+import net.caspervg.exptreasury.i18n.Language;
+import net.caspervg.exptreasury.listener.ExpLevelListener;
+import net.caspervg.exptreasury.persistence.Persistor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,7 +14,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class XPBank extends JavaPlugin implements Listener{
+public class ExpTreasury extends JavaPlugin implements Listener{
 
     HashMap<UUID, Integer> bankMap = null;
     private String persistPath;
@@ -22,12 +22,12 @@ public class XPBank extends JavaPlugin implements Listener{
     @Override
     public void onEnable() {
         if (!getDataFolder().exists()) {
-            getLogger().info(Language.getBundle().getString("xp-bank.info.firsttime"));
+            getLogger().info(Language.getBundle().getString("exp-treasury.info.firsttime"));
             getDataFolder().mkdir();
             saveDefaultConfig();
         }
 
-        persistPath = getDataFolder() + File.separator + "xp-bank.bin";
+        persistPath = getDataFolder() + File.separator + "exp-treasury.bin";
         File file = new File(persistPath);
 
         if (file.exists()) {
